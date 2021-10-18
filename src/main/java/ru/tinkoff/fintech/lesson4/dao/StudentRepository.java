@@ -2,8 +2,6 @@ package ru.tinkoff.fintech.lesson4.dao;
 
 import java.util.List;
 import java.util.Optional;
-
-
 import org.apache.ibatis.annotations.*;
 import ru.tinkoff.fintech.lesson4.model.Student;
 
@@ -25,6 +23,7 @@ public interface StudentRepository {
 
 
     })
+    Optional<Student> findById(long id);
 
     @Delete("DELETE FROM students WHERE id = #{id}")
     int deleteById(long id);
@@ -34,5 +33,6 @@ public interface StudentRepository {
     @Update("Update students set name1=#{name1}, " +
             " age=#{age}, timeStart=#{timeStart}, timeEnd=#{timeEnd}, course=#{course} where id=#{id}")
     int update(Student student);
-    Optional<Student> findById(long id);
+
+
 }
