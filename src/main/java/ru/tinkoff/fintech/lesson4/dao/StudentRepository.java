@@ -2,12 +2,9 @@ package ru.tinkoff.fintech.lesson4.dao;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+
+import org.apache.ibatis.annotations.*;
 import ru.tinkoff.fintech.lesson4.model.Student;
 
 @Mapper
@@ -28,5 +25,14 @@ public interface StudentRepository {
 
 
     })
+
+    @Delete("DELETE FROM students WHERE id = #{id}")
+    int deleteById(long id);
+    @Insert("INSERT INTO students(id, name1, age, timeStart, timeEnd, course) " +
+            " VALUES (#{id}, #{name1}, #{age}, #{timeStart} #{timeEnd} #{course})")
+    int insert(Student student);
+    @Update("Update students set name1=#{name1}, " +
+            " age=#{age}, timeStart=#{timeStart}, timeEnd=#{timeEnd}, course=#{course} where id=#{id}")
+    int update(Student student);
     Optional<Student> findById(long id);
 }

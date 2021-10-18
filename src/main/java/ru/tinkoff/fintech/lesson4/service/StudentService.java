@@ -1,7 +1,6 @@
 package ru.tinkoff.fintech.lesson4.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import ru.tinkoff.fintech.lesson4.dao.StudentRepository;
