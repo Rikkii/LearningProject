@@ -13,14 +13,14 @@ import ru.tinkoff.fintech.lesson4.model.Student;
 @Mapper
 public interface StudentRepository {
 
-    void save(Student student);
+    void save1(Student student);
 
     List<Student> findAll();
 
-    @Select("SELECT id, name, age FROM students")
+    @Select("SELECT id, name1, age FROM students")
     @Results(value = {
         @Result(column = "id", property = "id"),
-        @Result(column = "name", property = "name"),
+        @Result(column = "name1", property = "name1"),
         @Result(property = "age", column = "age"),
         @Result(property = "timeStart", column = "timeStart"),
             @Result(property = "timeEnd", column = "timeEnd"),

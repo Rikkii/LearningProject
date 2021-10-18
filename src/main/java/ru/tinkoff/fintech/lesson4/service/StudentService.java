@@ -16,8 +16,8 @@ public class StudentService {
         this.repository = repository;
     }
 
-    public void save(Student student) {
-        repository.save(student);
+    public void save1(Student student) {
+        repository.save1(student);
     }
 
     public Student findStudent(long id) {
