@@ -14,5 +14,6 @@ public class Student {
     private int age;
     private int timeStart;
     private int timeEnd;
-    private Course course;
+    private long course_id;
+
 }

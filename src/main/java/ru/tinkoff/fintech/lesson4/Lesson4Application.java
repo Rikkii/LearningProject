@@ -1,15 +1,17 @@
 package ru.tinkoff.fintech.lesson4;
 
 import java.util.List;
+
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 import ru.tinkoff.fintech.lesson4.model.Course;
 import ru.tinkoff.fintech.lesson4.model.Student;
-
+import ru.tinkoff.fintech.lesson4.service.CourseService;
+import ru.tinkoff.fintech.lesson4.service.CourseStudentService;
 import ru.tinkoff.fintech.lesson4.service.StudentService;
+
 
 @SpringBootApplication
 public class Lesson4Application {
@@ -19,29 +21,32 @@ public class Lesson4Application {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(StudentService service) {
+    ApplicationRunner applicationRunner(StudentService service1, CourseService service2, CourseStudentService service3) {
         return args -> {
             // create and save John
-            Course johnCourse = new Course("Java", "very good");
-            Student john = new Student(555L, "John", 27, 12, 14, johnCourse);
-            service.save1(john);
+            Course johnCourse = new Course(1L, "Java", "very good");
+            Student john = new Student(555L, "John", 27, 12, 14, 1L);
+            service1.save1(john);
+            service2.save1(johnCourse);
+            service3.addStudent(john.getId(), johnCourse.getCourse_id());
 
             // find John by id and assert fields
-            Student actual = service.findStudent(john.getId());
+            Student actual = service1.findStudent(john.getId());
             assert john.equals(actual);
 
             // create and save Mary
-            Course maryCourse = new Course("SQL", "practical");
-            Student mary = new Student(556L, "Mary", 19, 11, 15, maryCourse);
-            service.save1(mary);
+            Course maryCourse = new Course(2L, "SQL", "practical");
+            Student mary1 = new Student(556L, "Mary", 19, 11, 15, 1L);
+            
+            service1.save1(mary1);
+
+            service2.save1(maryCourse);
+            service3.addStudent(mary1.getId(), maryCourse.getCourse_id());
+
 
             // find all students
-            List<Student> all = service.findAll();
+            List<Student> all = service1.findAll();
             System.out.println(all);
         };
-
     }
-
-
-
-    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.tinkoff.fintech.lesson4.dao.CourseStudentRepository">
+
+
+
+    <insert id="addStudent">
+        INSERT INTO students_courses (id, course_id)
+        VALUES (#{id}, #{course_id});
+    </insert>
+<!--    <select id="getStudents" resultMap="CourseStudentMap">-->
+<!--        select s.id, c.course_id-->
+<!--        from courses as c left join students_courses as sc on c.course_id=sc.course_id-->
+<!--        left join students as s on sc.id=s.id-->
+<!--    </select>-->
+
+
+
+
+    <resultMap id="StudentResultMap" type="ru.tinkoff.fintech.lesson4.model.Student">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name1" jdbcType="VARCHAR" property="name1"/>
+
+    </resultMap>
+
+    <resultMap id="CourseResultMap" type="ru.tinkoff.fintech.lesson4.model.Course">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="course_id" jdbcType="VARCHAR" property="course_id"/>
+
+    </resultMap>
+
+
+
+
+
+</mapper>

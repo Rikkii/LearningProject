@@ -5,13 +5,18 @@
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.StudentRepository">
 
   <insert id="save1" parameterType="ru.tinkoff.fintech.lesson4.model.Student">
-    INSERT INTO students (id, name1, age, timeStart, timeEnd, course)
-    VALUES (#{id}, #{name1}, #{age}, #{timeStart}, #{timeEnd}, #{course})
+    INSERT INTO students (id, name1, age, timeStart, timeEnd, course_id)
+    VALUES (#{id}, #{name1}, #{age}, #{timeStart}, #{timeEnd}, #{course_id})
   </insert>
 
   <select id="findAll" resultMap="StudentMap">
     SELECT *
     FROM students
+  </select>
+  <select id="getCourses" resultMap="StudentMap">
+    select s.id, c.course_id
+    from students as s left join students_courses as sc on s.id=sc.id
+    left join courses as c on sc.course_id=c.course_id
   </select>
 
   <resultMap id="StudentMap" type="ru.tinkoff.fintech.lesson4.model.Student">
@@ -20,7 +25,7 @@
     <result property="age" column="age"/>
     <result property="timeStart" column="timeStart"/>
     <result property="timeEnd" column="timeEnd"/>
-    <result property="course" column="course"/>
+    <result property="course_id" column="course_id"/>
 
   </resultMap>
 
