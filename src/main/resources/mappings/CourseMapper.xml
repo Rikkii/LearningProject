@@ -14,14 +14,9 @@
         FROM courses
     </select>
 
-
     <resultMap id="CourseMap" type="ru.tinkoff.fintech.lesson4.model.Course">
         <result property="course_id" column="course_id"/>
         <result property="name2" column="name2"/>
         <result property="description" column="description"/>
-
     </resultMap>
-
-
-
 </mapper>

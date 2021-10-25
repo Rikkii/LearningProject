@@ -1,11 +1,9 @@
 package ru.tinkoff.fintech.lesson4.dao;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import ru.tinkoff.fintech.lesson4.model.Course;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +18,7 @@ public interface CourseRepository {
             @Result(column = "course_id", property = "course_id"),
             @Result(column = "name2", property = "name2"),
             @Result(property = "description", column = "description")
-
-
     })
+
     Optional<Course> findById(long  course_id);
 }

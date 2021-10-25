@@ -3,14 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.CourseStudentRepository">
-
-
-
-    <insert id="addStudent">
+    <insert id="addRow">
         INSERT INTO students_courses (id, course_id)
         VALUES (#{id}, #{course_id});
     </insert>
-
 
 <select id="courseForOld">
     select name2, description
@@ -24,9 +20,7 @@
     from students s inner join students_courses sc on s.id=sc.id inner join courses c on sc.course_id=c.course_id
     group by sc.course_id
     ))
-
 </select>
-
 
     <resultMap id="StudentResultMap" type="ru.tinkoff.fintech.lesson4.model.Student">
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -39,9 +33,5 @@
         <result column="course_id" jdbcType="VARCHAR" property="course_id"/>
 
     </resultMap>
-
-
-
-
-
 </mapper>
+

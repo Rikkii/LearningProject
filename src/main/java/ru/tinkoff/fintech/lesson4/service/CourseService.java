@@ -1,9 +1,7 @@
 package ru.tinkoff.fintech.lesson4.service;
-
 import org.springframework.stereotype.Service;
 import ru.tinkoff.fintech.lesson4.dao.CourseRepository;
 import ru.tinkoff.fintech.lesson4.model.Course;
-
 import java.util.List;
 
 @Service
