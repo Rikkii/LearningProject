@@ -8,5 +8,6 @@ import java.util.List;
 @Mapper
 public interface CourseStudentRepository {
     int addStudent(long id, long course_id);
+    int courseForOld();
 
 }

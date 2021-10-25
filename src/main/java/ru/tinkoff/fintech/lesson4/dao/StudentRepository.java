@@ -19,7 +19,7 @@ public interface StudentRepository {
         @Result(property = "age", column = "age"),
         @Result(property = "timeStart", column = "timeStart"),
             @Result(property = "timeEnd", column = "timeEnd"),
-            @Result(property = "course_id", column = "course_id")
+
 
 
     })

@@ -23,28 +23,27 @@ public class Lesson4Application {
     @Bean
     ApplicationRunner applicationRunner(StudentService service1, CourseService service2, CourseStudentService service3) {
         return args -> {
-            // create and save John
+
             Course johnCourse = new Course(1L, "Java", "very good");
-            Student john = new Student(555L, "John", 27, 12, 14, 1L);
+            Student john = new Student(555L, "John", 27, 12, 14);
             service1.save1(john);
             service2.save1(johnCourse);
-            service3.addStudent(john.getId(), johnCourse.getCourse_id());
+            service3.addStudent(555L, 1L);
 
-            // find John by id and assert fields
+
             Student actual = service1.findStudent(john.getId());
             assert john.equals(actual);
 
-            // create and save Mary
+
             Course maryCourse = new Course(2L, "SQL", "practical");
-            Student mary1 = new Student(556L, "Mary", 19, 11, 15, 1L);
+            Student mary1 = new Student(556L, "Mary", 19, 11, 15);
             
             service1.save1(mary1);
-
             service2.save1(maryCourse);
-            service3.addStudent(mary1.getId(), maryCourse.getCourse_id());
+            service3.addStudent(556L, 2L);
+            service3.addStudent(555L, 2L);
 
 
-            // find all students
             List<Student> all = service1.findAll();
             System.out.println(all);
         };
