@@ -1,5 +1,8 @@
 package ru.tinkoff.fintech.lesson4;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +32,8 @@ public class Lesson4Application {
             Student actual = service1.findStudent(john.getId());
             assert john.equals(actual);
 
+
+
             Course maryCourse = new Course(2L, "SQL", "practical");
             Student mary1 = new Student(556L, "Mary", 19, 11, 15);
             
@@ -37,8 +42,10 @@ public class Lesson4Application {
             service3.addRow(556L, 2L);
             service3.addRow(555L, 2L);
 
-            List<Student> all = service1.findAll();
-            System.out.println(all);
+//            Map<Long, Student> all = new HashMap<>();
+//            all.put(john.getId(), john);
+//            System.out.println(all);
         };
     }
 }
+
