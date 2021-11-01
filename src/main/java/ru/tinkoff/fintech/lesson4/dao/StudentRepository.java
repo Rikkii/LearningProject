@@ -1,6 +1,8 @@
 package ru.tinkoff.fintech.lesson4.dao;
 import java.util.List;
 import java.util.Optional;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -14,6 +16,9 @@ public interface StudentRepository {
 
     List<Student> findAll();
 
+    @Delete("DELETE FROM students WHERE id = #{id}")
+    int deleteById(long id);
+
     @Select("SELECT id, name1, age FROM students")
     @Results(value = {
         @Result(column = "id", property = "id"),
@@ -22,6 +27,8 @@ public interface StudentRepository {
         @Result(property = "timeStart", column = "timeStart"),
             @Result(property = "timeEnd", column = "timeEnd"),
     })
+
+
 
     Optional<Student> findById(long id);
 }

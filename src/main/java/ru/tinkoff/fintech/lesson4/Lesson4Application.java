@@ -27,10 +27,10 @@ public class Lesson4Application {
             Student john = new Student(555L, "John", 27, 12, 14);
             service1.save1(john);
             service2.save1(johnCourse);
-            service3.addRow(555L, 1L);
+            //service3.addRow(555L, 1L);
 
-            Student actual = service1.findStudent(john.getId());
-            assert john.equals(actual);
+            Student actual = service1.findStudent(556L);
+            System.out.println(actual);
 
 
 
@@ -40,7 +40,7 @@ public class Lesson4Application {
             service1.save1(mary1);
             service2.save1(maryCourse);
             service3.addRow(556L, 2L);
-            service3.addRow(555L, 2L);
+            //service3.addRow(555L, 2L);
 
 //            Map<Long, Student> all = new HashMap<>();
 //            all.put(john.getId(), john);

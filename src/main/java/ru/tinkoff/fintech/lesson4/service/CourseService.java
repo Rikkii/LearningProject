@@ -25,4 +25,8 @@ public class CourseService {
         return repository.findAll();
     }
 
+    public void deleteById(long course_id) {
+        repository.deleteById(course_id);
+    }
+
 }

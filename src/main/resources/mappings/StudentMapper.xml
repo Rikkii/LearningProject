@@ -14,6 +14,7 @@
     FROM students
   </select>
 
+
   <resultMap id="StudentMap" type="ru.tinkoff.fintech.lesson4.model.Student">
     <result property="id" column="id"/>
     <result property="name1" column="name1"/>
