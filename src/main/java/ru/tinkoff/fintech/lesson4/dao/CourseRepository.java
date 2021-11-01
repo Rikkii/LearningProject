@@ -10,18 +10,18 @@ import java.util.Optional;
 
 @Mapper
 public interface CourseRepository {
-    void save1(Course course);
+    void save(Course course);
 
     List<Course> findAll();
-    @Delete("DELETE FROM courses WHERE course_id = #{course_id}")
-    int deleteById(long course_id);
+    @Delete("DELETE FROM courses WHERE courseId = #{courseId}")
+    int deleteById(long courseId);
 
-    @Select("SELECT course_id, name2, description FROM courses")
+    @Select("SELECT courseId, name, description FROM courses")
     @Results(value = {
-            @Result(column = "course_id", property = "course_id"),
-            @Result(column = "name2", property = "name2"),
+            @Result(column = "courseId", property = "courseId"),
+            @Result(column = "name", property = "name"),
             @Result(property = "description", column = "description")
     })
 
-    Optional<Course> findById(long  course_id);
+    Optional<Course> findById(long  courseId);
 }

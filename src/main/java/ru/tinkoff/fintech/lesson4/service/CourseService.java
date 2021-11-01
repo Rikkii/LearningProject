@@ -13,20 +13,20 @@ public class CourseService {
         this.repository = repository;
     }
 
-    public void save1(Course course) {
-        repository.save1(course);
+    public void save(Course course) {
+        repository.save(course);
     }
 
-    public Course findCourse(long course_id) {
-        return repository.findById(course_id).orElseThrow();
+    public Course findCourse(long courseId) {
+        return repository.findById(courseId).orElseThrow();
     }
 
     public List<Course> findAll() {
         return repository.findAll();
     }
 
-    public void deleteById(long course_id) {
-        repository.deleteById(course_id);
+    public void deleteById(long courseId) {
+        repository.deleteById(courseId);
     }
 
 }

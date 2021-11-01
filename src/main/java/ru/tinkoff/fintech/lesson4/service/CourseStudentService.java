@@ -10,7 +10,7 @@ public class CourseStudentService {
         this.repository = repository;
     }
 
-    public void addRow(long id, long course_id) {
-        repository.addRow(id, course_id);
+    public void addRow(long id, long courseId) {
+        repository.addRow(id, courseId);
     }
 }

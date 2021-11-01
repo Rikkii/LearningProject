@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.CourseRepository">
 
-    <insert id="save1" parameterType="ru.tinkoff.fintech.lesson4.model.Course">
-        INSERT INTO courses (course_id, name2, description)
-        VALUES (#{course_id}, #{name2}, #{description})
+    <insert id="save" parameterType="ru.tinkoff.fintech.lesson4.model.Course">
+        INSERT INTO courses (courseId, name, description)
+        VALUES (#{courseId}, #{name}, #{description})
     </insert>
 
     <select id="findAll" resultMap="CourseMap">
@@ -15,8 +15,8 @@
     </select>
 
     <resultMap id="CourseMap" type="ru.tinkoff.fintech.lesson4.model.Course">
-        <result property="course_id" column="course_id"/>
-        <result property="name2" column="name2"/>
+        <result property="courseId" column="courseId"/>
+        <result property="name" column="name"/>
         <result property="description" column="description"/>
     </resultMap>
 </mapper>

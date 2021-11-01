@@ -1,12 +1,7 @@
 package ru.tinkoff.fintech.lesson4.controller;
-
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.tinkoff.fintech.lesson4.model.Course;
 import ru.tinkoff.fintech.lesson4.service.CourseStudentService;
-
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class CourseStudentController {
@@ -19,8 +14,7 @@ public class CourseStudentController {
     @PostMapping(path="/postStudentsToCourse",
             consumes = APPLICATION_JSON_VALUE
     )
-    public void addStudentsToCourse (@RequestParam("id") long id, @RequestParam("course_id") long course_id) {
-        service.addRow(id, course_id);
-
+    public void addStudentsToCourse (@RequestParam("id") long id, @RequestParam("courseId") long courseId) {
+        service.addRow(id, courseId);
     }
 }

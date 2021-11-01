@@ -1,5 +1,4 @@
 package ru.tinkoff.fintech.lesson4.controller;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,12 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.tinkoff.fintech.lesson4.model.Student;
 import ru.tinkoff.fintech.lesson4.service.StudentService;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 
 @RestController()
 public class StudentController {
@@ -23,8 +18,6 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-
-
 
     @GetMapping (
             path = "/getStudent",
@@ -37,7 +30,6 @@ public class StudentController {
             if (student.getId()==id) {
                 return student;
             }
-
         }
         return null;
     }
@@ -47,18 +39,12 @@ public class StudentController {
             consumes = APPLICATION_JSON_VALUE
     )
     public void addStudent (@RequestBody Student student) {
-        studentService.save1(student);
+        studentService.save(student);
     }
 
     @DeleteMapping(path="/deleteStudent")
     public void removeStudent(@RequestParam("id") long id) {
         studentService.deleteById(id);
     }
-
-
-
-
-
-
 
 }

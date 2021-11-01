@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Student {
     private long id;
-    private String name1;
+    private String name;
     private int age;
     private int timeStart;
     private int timeEnd;

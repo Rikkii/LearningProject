@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.StudentRepository">
 
-  <insert id="save1" parameterType="ru.tinkoff.fintech.lesson4.model.Student">
-    INSERT INTO students (id, name1, age, timeStart, timeEnd)
-    VALUES (#{id}, #{name1}, #{age}, #{timeStart}, #{timeEnd})
+  <insert id="save" parameterType="ru.tinkoff.fintech.lesson4.model.Student">
+    INSERT INTO students (id, name, age, timeStart, timeEnd)
+    VALUES (#{id}, #{name}, #{age}, #{timeStart}, #{timeEnd})
   </insert>
 
   <select id="findAll" resultMap="StudentMap">
@@ -14,10 +14,9 @@
     FROM students
   </select>
 
-
   <resultMap id="StudentMap" type="ru.tinkoff.fintech.lesson4.model.Student">
     <result property="id" column="id"/>
-    <result property="name1" column="name1"/>
+    <result property="name" column="name"/>
     <result property="age" column="age"/>
     <result property="timeStart" column="timeStart"/>
     <result property="timeEnd" column="timeEnd"/>

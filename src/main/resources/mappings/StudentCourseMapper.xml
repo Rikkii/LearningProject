@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.CourseStudentRepository">
     <insert id="addRow">
-        INSERT INTO students_courses (id, course_id)
-        VALUES (#{id}, #{course_id});
+        INSERT INTO students_courses (id, courseId)
+        VALUES (#{id}, #{courseId});
     </insert>
 
 <select id="courseForOld">
@@ -30,8 +30,7 @@
 
     <resultMap id="CourseResultMap" type="ru.tinkoff.fintech.lesson4.model.Course">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="course_id" jdbcType="VARCHAR" property="course_id"/>
-
+        <result column="courseId" jdbcType="VARCHAR" property="courseId"/>
     </resultMap>
 </mapper>
 
