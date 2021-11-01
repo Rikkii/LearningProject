@@ -2,6 +2,7 @@ package ru.tinkoff.fintech.lesson4.controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,9 @@ public class StudentController {
             }
         }
         return null;
+
+//        return studentService.findStudent(id);
+//        Такой вариант дает ошибку: Expected one result (or null) to be returned by selectOne(), but found: 2
     }
 
     @PostMapping (
@@ -46,5 +50,13 @@ public class StudentController {
     public void removeStudent(@RequestParam("id") long id) {
         studentService.deleteById(id);
     }
+
+    @PutMapping(path="/putStudent")
+    public void updateStudent (@RequestParam long id, @RequestParam String name, @RequestParam int age) {
+        studentService.updateById(id, name, age);
+    }
+    //не вышло сделать апдейт по-хорошему через
+    //public void updateStudent(@RequestParam("id") long id, @RequestBody Student student) {}
+    //выдавало ошибку: parameter "name" not found. available parameters are {student, id, param1, param2}
 
 }

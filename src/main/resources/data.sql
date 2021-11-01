@@ -4,15 +4,16 @@ CREATE TABLE students
     name VARCHAR(64) NOT NULL,
     age  INT         NOT NULL,
     timeStart INT    NOT NULL,
-    timeEnd   INT    NOT NULL
+    timeEnd   INT    NOT NULL,
+    grade INT NOT NULL
 );
 
 CREATE TABLE courses
 (
     courseId LONG NOT NULL PRIMARY KEY,
     name VARCHAR(64) NOT NULL,
-    description VARCHAR(64) NOT NULL
-
+    description VARCHAR(64) NOT NULL,
+    requiredGrade INT NOT NULL
 );
 
 CREATE TABLE students_courses

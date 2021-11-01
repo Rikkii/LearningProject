@@ -5,8 +5,8 @@
 <mapper namespace="ru.tinkoff.fintech.lesson4.dao.CourseRepository">
 
     <insert id="save" parameterType="ru.tinkoff.fintech.lesson4.model.Course">
-        INSERT INTO courses (courseId, name, description)
-        VALUES (#{courseId}, #{name}, #{description})
+        INSERT INTO courses (courseId, name, description, requiredGrade)
+        VALUES (#{courseId}, #{name}, #{description}, #{requiredGrade})
     </insert>
 
     <select id="findAll" resultMap="CourseMap">
@@ -18,5 +18,6 @@
         <result property="courseId" column="courseId"/>
         <result property="name" column="name"/>
         <result property="description" column="description"/>
+        <result property="requiredGrade" column="requiredGrade"/>
     </resultMap>
 </mapper>

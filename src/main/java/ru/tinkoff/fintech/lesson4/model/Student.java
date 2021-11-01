@@ -11,4 +11,5 @@ public class Student {
     private int age;
     private int timeStart;
     private int timeEnd;
+    private int grade;
 }

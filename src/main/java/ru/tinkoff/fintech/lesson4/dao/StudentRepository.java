@@ -18,13 +18,16 @@ public interface StudentRepository {
     @Delete("DELETE FROM students WHERE id = #{id}")
     int deleteById(long id);
 
-    @Select("SELECT id, name, age FROM students")
+    void update(long id, String name, int age);
+
+    @Select("SELECT id, name, age, timeStart, timeEnd, grade FROM students")
     @Results(value = {
         @Result(column = "id", property = "id"),
         @Result(column = "name", property = "name"),
         @Result(property = "age", column = "age"),
         @Result(property = "timeStart", column = "timeStart"),
             @Result(property = "timeEnd", column = "timeEnd"),
+            @Result(column = "grade", property = "grade")
     })
 
     Optional<Student> findById(long id);

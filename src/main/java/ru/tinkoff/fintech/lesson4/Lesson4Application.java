@@ -19,17 +19,19 @@ public class Lesson4Application {
     @Bean
     ApplicationRunner applicationRunner(StudentService service1, CourseService service2, CourseStudentService service3) {
         return args -> {
-            Course johnCourse = new Course(1L, "Java", "very good");
-            Student john = new Student(555L, "John", 27, 12, 14);
+            Course johnCourse = new Course(1L, "Java", "very good", 3);
+            Student john = new Student(555L, "John", 27, 12, 14, 2);
             service1.save(john);
             service2.save(johnCourse);
             service3.addRow(555L, 1L);
+            service1.updateById(555L, "Lola", 21);
+
 
             Student actual = service1.findStudent(556L);
             System.out.println(actual);
 
-            Course maryCourse = new Course(2L, "SQL", "practical");
-            Student mary1 = new Student(556L, "Mary", 19, 11, 15);
+            Course maryCourse = new Course(2L, "SQL", "practical", 2);
+            Student mary1 = new Student(556L, "Mary", 19, 11, 15, 5);
             
             service1.save(mary1);
             service2.save(maryCourse);

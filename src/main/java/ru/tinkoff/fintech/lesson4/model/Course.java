@@ -10,4 +10,6 @@ public class Course {
     private long courseId;
     private String name;
     private String description;
+    private int requiredGrade;
+
 }
