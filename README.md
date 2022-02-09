@@ -1,6 +1,6 @@
 # LearningProject
 
-Hi! I am Vera. This is my learning project where I built a backend service for online school using Spring Boot framework.
+Hi! I am Vera. This is my learning project where I've built a backend service for online school using Spring Boot framework.
 
 Features:
 
