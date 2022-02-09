@@ -7,7 +7,6 @@ import ru.tinkoff.fintech.lesson4.model.Student;
 import ru.tinkoff.fintech.lesson4.service.CourseService;
 import ru.tinkoff.fintech.lesson4.service.CourseStudentService;
 import ru.tinkoff.fintech.lesson4.service.StudentService;
-import java.util.List;
 
 @RestController
 public class CourseStudentController {
@@ -24,21 +23,10 @@ public class CourseStudentController {
 
     @PostMapping(path="/postStudentToCourse")
     public void addStudentsToCourse (@RequestParam("id") long id, @RequestParam("courseId") long courseId) {
-        List<Student> students = studentService.findAll();
-        Student studentCertainId=null;
-        Course courseCertainId = null;
-        for (var student: students) {
-            if (student.getId()==id) {
-                studentCertainId=student;
-            }
-        }
 
-        List<Course> courses = courseService.findAll();
-        for (var course: courses) {
-            if (course.getCourseId()==courseId) {
-                courseCertainId=course;
-            }
-        }
+        Student studentCertainId=studentService.findStudent(id);
+        Course courseCertainId = courseService.findCourse(courseId);
+
         if (studentCertainId.getGrade() >= courseCertainId.getRequiredGrade()) {
             service.addRow(id, courseId);
         }

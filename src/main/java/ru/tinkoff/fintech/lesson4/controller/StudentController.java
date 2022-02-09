@@ -1,17 +1,19 @@
 package ru.tinkoff.fintech.lesson4.controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.tinkoff.fintech.lesson4.model.Student;
 import ru.tinkoff.fintech.lesson4.service.StudentService;
-import java.util.List;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+import javax.annotation.security.RolesAllowed;
 
 @RestController()
+@RequestMapping("/learning-project/api/v1/students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -20,43 +22,28 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping (
-            path = "/getStudent",
-            produces = APPLICATION_JSON_VALUE
-    )
-    public Student getStudent (@RequestParam("id") long id) {
-
-        List <Student> students = studentService.findAll();
-        for (var student: students) {
-            if (student.getId()==id) {
-                return student;
-            }
+    @RolesAllowed("USER")
+    @GetMapping (path = "/{id}")
+    public Student getStudent (@PathVariable long id) {
+        return studentService.findStudent(id);
         }
-        return null;
 
-//        return studentService.findStudent(id);
-//        Такой вариант дает ошибку: Expected one result (or null) to be returned by selectOne(), but found: 2
-    }
-
-    @PostMapping (
-            path="postStudent",
-            consumes = APPLICATION_JSON_VALUE
-    )
+    @RolesAllowed("ADMIN")
+    @PostMapping ()
     public void addStudent (@RequestBody Student student) {
         studentService.save(student);
     }
 
-    @DeleteMapping(path="/deleteStudent")
-    public void removeStudent(@RequestParam("id") long id) {
+    @RolesAllowed("ADMIN")
+    @DeleteMapping(path = "/{id}")
+    public void removeStudent(@PathVariable long id) {
         studentService.deleteById(id);
     }
 
-    @PutMapping(path="/putStudent")
-    public void updateStudent (@RequestParam long id, @RequestParam String name, @RequestParam int age) {
-        studentService.updateById(id, name, age);
+    @RolesAllowed("ADMIN")
+    @PutMapping(path = "/{id}")
+    public void updateStudent (@RequestBody Student student, @PathVariable long id) {
+        studentService.updateById(student, id);
     }
-    //не вышло сделать апдейт по-хорошему через
-    //public void updateStudent(@RequestParam("id") long id, @RequestBody Student student) {}
-    //выдавало ошибку: parameter "name" not found. available parameters are {student, id, param1, param2}
 
 }

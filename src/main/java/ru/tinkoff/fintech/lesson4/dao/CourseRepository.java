@@ -16,13 +16,7 @@ public interface CourseRepository {
     @Delete("DELETE FROM courses WHERE courseId = #{courseId}")
     int deleteById(long courseId);
 
-    @Select("SELECT courseId, name, description, requiredGrade FROM courses")
-    @Results(value = {
-            @Result(column = "courseId", property = "courseId"),
-            @Result(column = "name", property = "name"),
-            @Result(property = "description", column = "description"),
-            @Result(column = "requiredGrade", property = "requiredGrade")
-    })
+    @Select("SELECT courseId, name, description, requiredGrade FROM courses where courseId = #{courseId} ")
 
-    Optional<Course> findById(long  courseId);
+    Course findById(long courseId);
 }

@@ -18,7 +18,7 @@ public class CourseService {
     }
 
     public Course findCourse(long courseId) {
-        return repository.findById(courseId).orElseThrow();
+        return repository.findById(courseId);
     }
 
     public List<Course> findAll() {

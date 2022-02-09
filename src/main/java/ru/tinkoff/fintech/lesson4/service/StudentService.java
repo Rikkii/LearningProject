@@ -18,7 +18,7 @@ public class StudentService {
     }
 
     public Student findStudent(long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id);
     }
 
     public List<Student> findAll() {
@@ -29,5 +29,5 @@ public class StudentService {
         repository.deleteById(id);
     }
 
-    public void updateById(long id, String name, int age) { repository.update(id, name, age); }
+    public void updateById(Student student, long id) { repository.update(student, id); }
 }

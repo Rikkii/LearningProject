@@ -10,7 +10,7 @@
   </insert>
 
   <update id="update" parameterType="ru.tinkoff.fintech.lesson4.model.Student">
-    Update students set name=#{name}, age=#{age}
+    Update students set id=#{id}
      where id=#{id}
   </update>
 
