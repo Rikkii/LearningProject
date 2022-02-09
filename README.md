@@ -1,7 +1,6 @@
 # LearningProject
-Backend service for online school
 
-This is my learning project where I built a backend service for online school. 
+Hi! I am Vera. This is my learning project where I built a backend service for online school using Spring Boot framework.
 
 Features:
 
